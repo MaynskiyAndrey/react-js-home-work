@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Message } from './components/Message';
 import { useState } from 'react';
+import { MessageList } from './components/MessageList/MessageList';
 
 
 const textForMessage = 'Текст сообщения';
@@ -13,6 +14,7 @@ function App() {
       <header className="App-header">
         <Message text={textForMessage} />
         <img src={logo} className="App-logo" alt="logo" />
+        <MessageList messageList={messageList} />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
