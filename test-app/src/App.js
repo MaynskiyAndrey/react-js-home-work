@@ -1,19 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 import { Message } from './components/Message';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { MessageList } from './components/MessageList/MessageList';
+import { MessageForm } from './components/MessageForm/MessageForm';
 
 
 const textForMessage = 'Текст сообщения';
 
+const userAutorName = 'user';
+
 function App() {
   const [messageList, setMessageList] = useState([]);
+
+  const spendMessage = useCallback((text) => {
+    setMessageList([...messageList, {
+      autor: userAutorName,
+      text: text
+    }]);
+  }, [messageList]);
+
   return (
     <div className="App">
       <header className="App-header">
         <Message text={textForMessage} />
         <img src={logo} className="App-logo" alt="logo" />
+        <MessageForm spendMessage={spendMessage} />
         <MessageList messageList={messageList} />
         <p>
           Edit <code>src/App.js</code> and save to reload.
