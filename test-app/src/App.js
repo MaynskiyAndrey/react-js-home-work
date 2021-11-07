@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { Message } from './components/Message';
+import { useState } from 'react';
+
 
 const textForMessage = 'Текст сообщения';
 
 function App() {
+  const [messageList, setMessageList] = useState([]);
   return (
     <div className="App">
       <header className="App-header">
