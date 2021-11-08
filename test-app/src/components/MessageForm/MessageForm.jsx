@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './MessageForm.css'
+import Button from '@mui/material/Button'
+import { TextField } from '@mui/material';
 
 export const MessageForm = ({ spendMessage }) => {
 	const [text, setText] = useState('');
 
+	const textRef = useRef();
+
+	useEffect(() => { textRef.current.focus(); }, []);
 
 	const targetChangeValue = (e) => {
 		setText(e.target.value);
@@ -13,12 +18,13 @@ export const MessageForm = ({ spendMessage }) => {
 		e.preventDefault();
 		spendMessage(text);
 		setText('');
+		textRef.current.focus();
 	}
 
 	return (
 		<form onSubmit={targetSubmit} className="messageForm">
-			<input type="text" value={text} className="formTextMessage" onChange={targetChangeValue} />
-			<input type="submit" className="submitButton" />
+			<TextField id="filled-basic" label="Filled" variant="filled" value={text} onChange={targetChangeValue} className="formTextMessage" inputRef={textRef} />
+			<Button variant="outlined" type="submit">Отправить</Button>
 		</form>
 	);
 }
