@@ -1,0 +1,21 @@
+.list {
+	border: 1px solid lightgray;
+	padding: 5px;
+	display: flex;
+	flex-flow: column;
+	text-align: left;
+	flex-wrap: nowrap;
+	font-size: 18px;
+	min-width: 800px;
+	height: 500px;
+	overflow-y: scroll; 
+}
+
+.messageItem {
+	display: flex;
+	flex-flow: row;
+}
+.autor {
+	color: lightskyblue;
+	margin-right: 5px;
+}

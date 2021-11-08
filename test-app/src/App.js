@@ -25,10 +25,12 @@ function App() {
   useEffect(() => {
     if (messageList.length != 0 &&
       messageList[messageList.length - 1].autor === userAutorName) {
-      setMessageList([...messageList, {
-        autor: robotAutorName,
-        text: robotFixtAnswer
-      }]);
+      let timerID = setTimeout(() => {
+        setMessageList([...messageList, {
+          autor: robotAutorName,
+          text: robotFixtAnswer
+        }])
+      }, 1600);
     }
 
   }, [messageList]);
@@ -37,20 +39,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Message text={textForMessage} />
-        <img src={logo} className="App-logo" alt="logo" />
-        <MessageForm spendMessage={spendMessage} />
+
         <MessageList messageList={messageList} />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MessageForm spendMessage={spendMessage} />
       </header>
     </div>
   );
