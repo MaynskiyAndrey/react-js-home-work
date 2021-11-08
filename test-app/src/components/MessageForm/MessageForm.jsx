@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './MessageForm.css'
+import Button from '@mui/material/Button'
+import { TextField } from '@mui/material';
 
 export const MessageForm = ({ spendMessage }) => {
 	const [text, setText] = useState('');
@@ -17,8 +19,8 @@ export const MessageForm = ({ spendMessage }) => {
 
 	return (
 		<form onSubmit={targetSubmit} className="messageForm">
-			<input type="text" value={text} className="formTextMessage" onChange={targetChangeValue} />
-			<input type="submit" className="submitButton" />
+			<TextField id="filled-basic" label="Filled" variant="filled" value={text} onChange={targetChangeValue} className="formTextMessage" />
+			<Button variant="outlined" type="submit">Отправить</Button>
 		</form>
 	);
 }
