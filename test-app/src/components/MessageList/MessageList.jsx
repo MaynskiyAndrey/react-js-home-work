@@ -7,8 +7,7 @@ export const MessageList = ({ messageList }) => {
 
 	useEffect(() => {
 		formRef.current.scrollTop = formRef.current.scrollHeight;
-	}
-		, [messageList])
+	}, [messageList]);
 
 	const result = (<div ref={formRef} className="list">
 		{messageList.map((message) => <div className="messageItem">

@@ -5,30 +5,25 @@ import { useCallback, useEffect, useState } from 'react';
 import { MessageList } from './components/MessageList/MessageList';
 import { MessageForm } from './components/MessageForm/MessageForm';
 
-
-const textForMessage = 'Текст сообщения';
-
-const userAutorName = 'user';
-const robotAutorName = 'robot';
-const robotFixtAnswer = 'Сообщение получено';
+import { CONSTANTS } from './utils/constants';
 
 function App() {
   const [messageList, setMessageList] = useState([]);
 
   const spendMessage = useCallback((text) => {
     setMessageList([...messageList, {
-      autor: userAutorName,
+      autor: CONSTANTS.userAutorName,
       text: text
     }]);
   }, [messageList]);
 
   useEffect(() => {
-    if (messageList.length != 0 &&
-      messageList[messageList.length - 1].autor === userAutorName) {
+    if (messageList.length &&
+      messageList[messageList.length - 1].autor === CONSTANTS.userAutorName) {
       let timerID = setTimeout(() => {
         setMessageList([...messageList, {
-          autor: robotAutorName,
-          text: robotFixtAnswer
+          autor: CONSTANTS.robotAutorName,
+          text: CONSTANTS.robotFixtAnswer
         }])
       }, 1600);
     }
@@ -38,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Message text={textForMessage} />
+        <Message text={CONSTANTS.textForMessage} />
 
         <MessageList messageList={messageList} />
         <MessageForm spendMessage={spendMessage} />
