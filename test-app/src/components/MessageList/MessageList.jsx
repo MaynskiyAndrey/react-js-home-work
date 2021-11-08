@@ -10,7 +10,7 @@ export const MessageList = ({ messageList }) => {
 	}, [messageList]);
 
 	const result = (<div ref={formRef} className="list">
-		{messageList.map((message) => <div className="messageItem">
+		{messageList.map((message) => <div className="messageItem" key={message.id}>
 			<p className="autor">{message.autor} :</p>
 
 			<p className="text"> {message.text}</p> </div>)}

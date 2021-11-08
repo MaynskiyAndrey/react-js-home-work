@@ -4,8 +4,8 @@ import { Message } from './components/Message';
 import { useCallback, useEffect, useState } from 'react';
 import { MessageList } from './components/MessageList/MessageList';
 import { MessageForm } from './components/MessageForm/MessageForm';
-
 import { CONSTANTS } from './utils/constants';
+import { uuid } from 'uuidv4';
 
 function App() {
   const [messageList, setMessageList] = useState([]);
@@ -13,7 +13,8 @@ function App() {
   const spendMessage = useCallback((text) => {
     setMessageList([...messageList, {
       autor: CONSTANTS.userAutorName,
-      text: text
+      text: text,
+      id: uuid(),
     }]);
   }, [messageList]);
 
@@ -23,7 +24,8 @@ function App() {
       let timerID = setTimeout(() => {
         setMessageList([...messageList, {
           autor: CONSTANTS.robotAutorName,
-          text: CONSTANTS.robotFixtAnswer
+          text: CONSTANTS.robotFixtAnswer,
+          id: uuid(),
         }])
       }, 1600);
     }
